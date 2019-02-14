@@ -6,7 +6,7 @@
 package batalla.naval;
 
 import java.awt.Graphics;
-
+import javax.swing.JPanel;
 
 /**
  *
@@ -14,34 +14,16 @@ import java.awt.Graphics;
  */
 public class Vista extends javax.swing.JFrame {
 
-    int Mitablero[][] = new int[15][15] ;
-    int PCtablero[][] = new int [15][15] ;
-    
+    int Mitablero[][] = new int[15][15];
+    int PCtablero[][] = new int[15][15];
+
     public Vista() {
         initComponents();
-        setBounds(0,0,930,700);
+        setBounds(0, 0, 930, 700);
         setLocationRelativeTo(null);
-        
-    }
-    
-    
 
-    
-    @Override
-    public void paint (Graphics g){
-        PintarCuadro(g, Mitablero, 10, 240);
-        PintarCuadro(g, PCtablero, 10, 240);
-        
     }
-    public void PintarCuadro (Graphics g,int tab[][], int x, int y){
-    
-        for (int i = 0; i < 15; i++) {
-            for (int  j = 0;  j < 15;  j++) {
-                g.drawRect(x*i*30, y*j*30, 30, 30);
-            }
-        }
-    
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,16 +110,15 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void BJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BJugarActionPerformed
-        
-    
+
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
                 Mitablero[i][j] = 0;
                 PCtablero[i][j] = 0;
             }
         }
-    
-    
+
+
     }//GEN-LAST:event_BJugarActionPerformed
 
     /**
@@ -187,4 +168,17 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
+}
+
+class JPanelMatriz extends JPanel {
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (int i = 1; i < 15; i++) {
+            for (int j = 1; j < 15; j++) {
+                g.drawRect(i * 30, j * 30, 30, 30);
+            }
+        }
+    }
 }
